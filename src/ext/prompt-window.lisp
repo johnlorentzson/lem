@@ -6,7 +6,9 @@
   (:lock t)
   (:export :prompt-attribute
            :*prompt-completion-window-shape*
-           :current-prompt-window))
+           :current-prompt-window
+           :prompt-next-history
+           :prompt-previous-history))
 (in-package :lem/prompt-window)
 
 (defconstant +border-size+ 1)
@@ -77,6 +79,8 @@
 (define-key *prompt-mode-keymap* "Tab" 'prompt-completion)
 (define-key *prompt-mode-keymap* "M-p" 'prompt-previous-history)
 (define-key *prompt-mode-keymap* "M-n" 'prompt-next-history)
+(define-key *prompt-mode-keymap* 'previous-line 'prompt-previous-history)
+(define-key *prompt-mode-keymap* 'next-line 'prompt-next-history)
 (define-key *prompt-mode-keymap* 'delete-active-window 'prompt-quit)
 
 (defun current-prompt-window ()
